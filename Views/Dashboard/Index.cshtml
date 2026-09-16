@@ -1,0 +1,69 @@
+@model IEnumerable<BudgetBook.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Dashboard";
+
+    var income = Model
+        .Where(t => t.Type == BudgetBook.Models.TransactionType.INCOME)
+        .Sum(t => t.Amount);
+
+    var expenses = Model
+        .Where(t => t.Type == BudgetBook.Models.TransactionType.EXPENSE)
+        .Sum(t => t.Amount);
+
+    var balance = income - expenses;
+}
+
+<h1>BudgetBook Dashboard</h1>
+
+<div class="row mt-4">
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Einnahmen</h5>
+            <h2>@income.ToString("0.00") €</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Ausgaben</h5>
+            <h2>@expenses.ToString("0.00") €</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Saldo</h5>
+            <h2>@balance.ToString("0.00") €</h2>
+        </div>
+    </div>
+
+</div>
+
+<h2 class="mt-5">Meine Buchungen</h2>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Beschreibung</th>
+            <th>Kategorie</th>
+            <th>Typ</th>
+            <th>Betrag</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+            <tr>
+                <td>@transaction.BookingDate.ToString("dd.MM.yyyy")</td>
+                <td>@transaction.Description</td>
+                <td>@transaction.Category.Name</td>
+                <td>@transaction.Type</td>
+                <td>@transaction.Amount.ToString("0.00") €</td>
+            </tr>
+        }
+    </tbody>
+</table>
