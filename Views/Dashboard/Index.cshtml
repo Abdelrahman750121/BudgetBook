@@ -41,7 +41,13 @@
 
 </div>
 
-<h2 class="mt-5">Meine Buchungen</h2>
+<div class="d-flex justify-content-between align-items-center mt-5">
+    <h2>Meine Buchungen</h2>
+
+    <a asp-action="Create" class="btn btn-primary">
+        + Neue Buchung
+    </a>
+</div>
 
 <table class="table mt-3">
     <thead>
@@ -51,6 +57,7 @@
             <th>Kategorie</th>
             <th>Typ</th>
             <th>Betrag</th>
+            <th>Aktionen</th>
         </tr>
     </thead>
 
@@ -63,6 +70,25 @@
                 <td>@transaction.Category.Name</td>
                 <td>@transaction.Type</td>
                 <td>@transaction.Amount.ToString("0.00") €</td>
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@transaction.Id"
+                       class="btn btn-sm btn-info">
+                        Details
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@transaction.Id"
+                       class="btn btn-sm btn-warning">
+                        Bearbeiten
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@transaction.Id"
+                       class="btn btn-sm btn-danger">
+                        Löschen
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

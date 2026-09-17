@@ -1,9 +1,14 @@
+using System.Globalization;
 using BudgetBook.Data;
 using Microsoft.EntityFrameworkCore;
 using BudgetBook.Models;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+var cultureInfo = new CultureInfo("de-AT");
+
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

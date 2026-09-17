@@ -1,0 +1,103 @@
+@model BudgetBook.Models.ViewModels.TransactionFormViewModel
+
+@{
+    ViewData["Title"] = "Neue Buchung";
+}
+
+<h1>Neue Buchung</h1>
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3"></div>
+
+            <!-- Betrag -->
+            <div class="mb-3">
+                <label asp-for="Amount" class="form-label">
+                    Betrag
+                </label>
+
+                <input asp-for="Amount"
+                  type="text"
+                  class="form-control"
+                  placeholder="z. B. 25,50" />
+                <span asp-validation-for="Amount"
+                      class="text-danger"></span>
+            </div>
+
+            <!-- Datum -->
+            <div class="mb-3">
+                <label asp-for="BookingDate" class="form-label">
+                    Datum
+                </label>
+
+                <input asp-for="BookingDate"
+                       type="date"
+                       class="form-control" />
+
+                <span asp-validation-for="BookingDate"
+                      class="text-danger"></span>
+            </div>
+
+            <!-- Typ -->
+            <div class="mb-3">
+                <label asp-for="Type" class="form-label">
+                    Typ
+                </label>
+
+                <select asp-for="Type"
+                        asp-items="Html.GetEnumSelectList<BudgetBook.Models.TransactionType>()"
+                        class="form-select">
+                    <option value="">Bitte wählen</option>
+                </select>
+
+                <span asp-validation-for="Type"
+                      class="text-danger"></span>
+            </div>
+
+            <!-- Kategorie -->
+            <div class="mb-3">
+                <label asp-for="CategoryId" class="form-label">
+                    Kategorie
+                </label>
+
+                <select asp-for="CategoryId"
+                        asp-items="Model.Categories"
+                        class="form-select">
+                    <option value="">Bitte wählen</option>
+                </select>
+
+                <span asp-validation-for="CategoryId"
+                      class="text-danger"></span>
+            </div>
+
+            <!-- Beschreibung -->
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">
+                    Beschreibung
+                </label>
+
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="3"></textarea>
+
+                <span asp-validation-for="Description"
+                      class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Speichern
+            </button>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Abbrechen
+            </a>
+
+        </form>
+
+    </div>
+</div>
+
