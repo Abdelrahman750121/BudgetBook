@@ -1,31 +1,142 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
+/* =========================
+   BudgetBook Design
+   ========================= */
 
 body {
-  margin-bottom: 60px;
+    background-color: #f4f7fb;
+    color: #2d3748;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Navigation */
+.navbar {
+    background: linear-gradient(90deg, #2c5282, #3182ce) !important;
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.navbar .nav-link {
+    color: white !important;
+}
+
+.navbar .nav-link:hover {
+    opacity: 0.8;
+}
+
+
+/* Dashboard Überschrift */
+h1 {
+    font-weight: 700;
+    color: #2c5282;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+
+/* Statistik Karten */
+.card {
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card h5 {
+    font-size: 0.95rem;
+    color: #718096;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+
+/* Einnahmen */
+.row .col-md-4:nth-child(1) .card {
+    background-color: #e9f8ef;
+    border-left: 6px solid #38a169;
+}
+
+.row .col-md-4:nth-child(1) .card h2 {
+    color: #2f855a;
+}
+
+
+/* Ausgaben */
+.row .col-md-4:nth-child(2) .card {
+    background-color: #fff0f0;
+    border-left: 6px solid #e53e3e;
+}
+
+.row .col-md-4:nth-child(2) .card h2 {
+    color: #c53030;
+}
+
+
+/* Saldo */
+.row .col-md-4:nth-child(3) .card {
+    background-color: #ebf8ff;
+    border-left: 6px solid #3182ce;
+}
+
+.row .col-md-4:nth-child(3) .card h2 {
+    color: #2b6cb0;
+}
+
+
+/* Buchungstabelle */
+.table {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+}
+
+.table thead {
+    background-color: #2c5282;
+    color: white;
+}
+
+.table thead th {
+    border: none;
+    padding: 15px;
+}
+
+.table tbody td {
+    padding: 14px 15px;
+    vertical-align: middle;
+    border-color: #edf2f7;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #edf6ff;
+}
+
+
+/* Footer */
+.footer {
+    background-color: white;
+    margin-top: 50px;
 }
